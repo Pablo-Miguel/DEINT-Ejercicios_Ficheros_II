@@ -113,9 +113,9 @@ void ejercicio3()
 void ejercicio4()
 {
 
-    //Ejercicio 4 C:\Users\Dam\Desktop\prueba
+    //Ejercicio 4
 
-    Console.WriteLine("EJERCICIO 3");
+    Console.WriteLine("EJERCICIO 4");
 
     Console.WriteLine("Introduzca ruta de algún direcctorio:");
     String ruta = Console.ReadLine();
@@ -124,13 +124,61 @@ void ejercicio4()
 
     if (existe)
     {
-        
 
+        Console.WriteLine("Introduzca extensión:");
+        String extension = Console.ReadLine();
+        var ficheros = Directory.EnumerateFiles(ruta, $"*{extension}", SearchOption.AllDirectories);
+
+        Console.WriteLine($"Quieres borrar los ficheros con la extension {extension} (Si - 1, No - 0) \nFicheros afectados: {ficheros.Count()}");
+
+        if (Console.ReadLine().Equals("1"))
+        {
+            foreach (String elem in ficheros)
+            {
+                File.Delete(elem);
+            }
+
+            Console.WriteLine("Archivos restantes:");
+            String[] fich = Directory.GetFiles(ruta);
+
+            foreach (var path in fich)
+            {
+                Console.WriteLine(path);
+            }
+
+        }
+        else {
+            Console.WriteLine("Acción de borrado cancelada");
+        }
 
     }
     else
     {
         Console.WriteLine("El direcctorio no existe");
+    }
+
+}
+
+void ejercicio5() {
+
+    //Ejercicio 5 C:\Users\Nitro\Desktop\prueba\index.html
+
+    Console.WriteLine("EJERCICIO 5");
+
+    Console.WriteLine("Introduzca ruta de algún fichero:");
+    String ruta = Console.ReadLine();
+
+    if (File.Exists(ruta))
+    {
+
+        Console.WriteLine($"Introduzca la nueva extensión para el fichero {Path.GetFileName(ruta)}:");
+        String extension = Console.ReadLine();
+
+        File.Move(ruta, Path.Combine(ruta, ruta.Replace(Path.GetExtension(ruta), extension)));
+
+    }
+    else {
+        Console.WriteLine("El fichero no existe");
     }
 
 }
@@ -141,4 +189,6 @@ void ejercicio4()
 
 //ejercicio3();
 
-ejercicio4();
+//ejercicio4();
+
+//ejercicio5();
