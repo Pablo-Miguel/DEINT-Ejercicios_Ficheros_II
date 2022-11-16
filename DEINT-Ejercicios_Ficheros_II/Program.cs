@@ -161,7 +161,7 @@ void ejercicio4()
 
 void ejercicio5() {
 
-    //Ejercicio 5 C:\Users\Nitro\Desktop\prueba\index.html
+    //Ejercicio 5
 
     Console.WriteLine("EJERCICIO 5");
 
